@@ -11,9 +11,20 @@ namespace BootCamp.Chapter
     {
         static async Task Main(string[] args)
         {
+            /*
+             * 
+             * A minore ad maius a solis ortu usque ad occasum ab uno disce omnes
+
+                From the smaller to the greater,
+                From sunrise to sunset,
+                From one, learn all.
+
+                smaller sunrise sunset
+             * 
+             */
             // Put two // in front of the await to comment out Part1And2 once you solved it.
             // Make sure to note down the secret passcode before. You will need it!
-            await Part1And2();
+            //await Part1And2();
             OptionalPart();
         }
 
