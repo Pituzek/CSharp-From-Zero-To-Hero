@@ -7,5 +7,6 @@ namespace BootCamp.Chapter
 {
     interface IMovable
     {
+        void Move(Point position);
     }
 }

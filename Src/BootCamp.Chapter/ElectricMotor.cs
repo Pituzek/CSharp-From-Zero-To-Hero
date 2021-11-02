@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 
 namespace BootCamp.Chapter
@@ -14,5 +15,9 @@ namespace BootCamp.Chapter
             motorType = type;
         }
 
+        public void Move(Point position)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
