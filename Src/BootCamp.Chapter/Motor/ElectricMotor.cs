@@ -8,16 +8,16 @@ namespace BootCamp.Chapter
     class ElectricMotor : IMotor
     {
         public string motorType { get; set; }
-        public IMovable currentPos;
+        public IMotor currentPos;
 
-        public ElectricMotor(string type)
+        public ElectricMotor()
         {
-            motorType = type;
+            motorType = "electric";
         }
 
         public void Move(Point position)
         {
-            throw new NotImplementedException();
+            currentPos = position;
         }
     }
 }
