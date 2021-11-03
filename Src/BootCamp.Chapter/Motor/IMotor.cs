@@ -4,8 +4,8 @@ using System.Text;
 
 namespace BootCamp.Chapter
 {
-    interface IMotor : IMovable
+    interface IMotor
     {
-        string motorType { get; set; }
+        string motorTypeName { get; set; }
     }
 }

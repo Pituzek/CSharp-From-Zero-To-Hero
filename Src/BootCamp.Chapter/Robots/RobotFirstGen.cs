@@ -6,7 +6,7 @@ using System.Text;
 
 namespace BootCamp.Chapter
 {
-    class RobotMKI
+    class RobotFirstGen
     {
 
     }
