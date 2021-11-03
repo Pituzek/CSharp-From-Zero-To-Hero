@@ -6,5 +6,6 @@ namespace BootCamp.Chapter
 {
     interface IShaker
     {
+        string shakerModelName { get; }
     }
 }

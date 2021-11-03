@@ -9,22 +9,15 @@ namespace BootCamp.Chapter.Motor
 {
     class InternalCombustionMotor : IMotor
     {
-        private Point _position;
         public string motorTypeName { get; set; }
 
         public InternalCombustionMotor()
         {
             motorTypeName = "Internal combustion engine";
         }
-
-        public void Move(Point position)
+        public override string ToString()
         {
-            _position = position;
-        }
-
-        public void MoveRobotByEngine(Point position, IMkII robot, IMotor engineType)
-        {
-            robot.Move(position);
+            return string.Format(motorTypeName);
         }
     }
 }

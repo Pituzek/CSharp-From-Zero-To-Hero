@@ -8,10 +8,20 @@ namespace BootCamp.Chapter.Robots
     class RobotSecondGen : IMkII
     {
         public string motorTypeName { get; set; }
+        public string shakerModelName { get; set; }
 
         private Point _position;
 
         private IMotor _motorMkII;
+
+        private IShaker _shakerMkII;
+
+        private bool _isAbleToMakeCoctail;
+
+        public bool IsAbleToMakeCoctail
+        {
+            get { return _isAbleToMakeCoctail; }
+        }
 
         private bool _isMobile;
         public bool IsMobile
@@ -32,19 +42,29 @@ namespace BootCamp.Chapter.Robots
             get { return _id; }
         }
 
-        public RobotSecondGen(int id, Point initialPos, IMotor motorType = null)
+        public RobotSecondGen(int id, Point initialPos, IMotor motorType = null, IShaker shakerType = null)
         {
             _id = id;
             _position = initialPos;
             _motorMkII = motorType;
+            _shakerMkII = shakerType;
 
-            if (motorType != null)
+            if (_motorMkII != null)
             {
                 _isMobile = true;
             }
             else
             {
                 _isMobile = false;
+            }
+
+            if (_shakerMkII != null)
+            {
+                _isAbleToMakeCoctail = true;
+            }
+            else
+            {
+                _isAbleToMakeCoctail = false;
             }
         }
 
