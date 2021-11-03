@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 
-namespace BootCamp.Chapter
+namespace BootCamp.Chapter.Robots
 {
-    class ElectricMotor : IMotor
+    class RobotMKII 
     {
         public string motorType { get; set; }
-        public Point _position;
+        private Point _position;
+        private IMotor _motorMkII;
 
-        public ElectricMotor()
+        public RobotMKII()
         {
-            motorType = "electric";
+            _position = (new Point(0, 0));
+            _motorMkII = new ElectricMotor();
         }
 
         public void Move(Point position)

@@ -7,6 +7,5 @@ namespace BootCamp.Chapter
     interface IMotor : IMovable
     {
         string motorType { get; set; }
-
     }
 }
