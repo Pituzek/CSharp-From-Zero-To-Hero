@@ -47,7 +47,7 @@ namespace BootCamp.Chapter.Robots
             _id = id;
             _position = initialPos;
             _motorMkII = motorType;
-            _shakerMkII = shakerType;
+            _shakerMkII = null;
             _isAbleToMakeCoctail = false;
 
             if (_motorMkII != null)
