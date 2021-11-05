@@ -42,12 +42,13 @@ namespace BootCamp.Chapter.Robots
             get { return _id; }
         }
 
-        public RobotSecondGen(int id, Point initialPos, IMotor motorType = null, IShaker shakerType = null)
+        public RobotSecondGen(int id, Point initialPos, IMotor motorType = null)
         {
             _id = id;
             _position = initialPos;
             _motorMkII = motorType;
             _shakerMkII = shakerType;
+            _isAbleToMakeCoctail = false;
 
             if (_motorMkII != null)
             {
@@ -56,15 +57,6 @@ namespace BootCamp.Chapter.Robots
             else
             {
                 _isMobile = false;
-            }
-
-            if (_shakerMkII != null)
-            {
-                _isAbleToMakeCoctail = true;
-            }
-            else
-            {
-                _isAbleToMakeCoctail = false;
             }
         }
 
