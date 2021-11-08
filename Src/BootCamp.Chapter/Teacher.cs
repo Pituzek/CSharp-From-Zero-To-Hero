@@ -5,21 +5,27 @@ using System.Text;
 
 namespace BootCamp.Chapter
 {
-    public class Teacher
+    public class Teacher<TSubject> : ITeacher<TSubject> where TSubject : Subject, new()
     {
         public string Name { get; set; }
 
         public Teacher()
         {
-            Name = nameof(Teacher);
+            //Name = nameof(Teacher);
         }
 
         public Teacher(string name)
         {
             Name = name;
         }
+
+        public TSubject ProduceMaterial()
+        {
+            TSubject t = new TSubject();
+            return TSubject;
+        }
     }
-    public class HighSchoolTeacher : Teacher
+    public class HighSchoolTeacher : Teacher<Subject>
     {
         public HighSchoolTeacher()
         {
@@ -32,7 +38,7 @@ namespace BootCamp.Chapter
         }
     }
 
-    public class MiddleSchoolTeacher : Teacher
+    public class MiddleSchoolTeacher : Teacher<Subject>
     {
         public MiddleSchoolTeacher()
         {
@@ -45,7 +51,7 @@ namespace BootCamp.Chapter
         }
     }
 
-    public class UniversityTeacher : Teacher
+    public class UniversityTeacher : Teacher<Subject>
     {
         public UniversityTeacher()
         {
