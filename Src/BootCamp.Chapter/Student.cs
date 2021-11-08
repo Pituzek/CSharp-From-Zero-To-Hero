@@ -13,7 +13,7 @@ namespace BootCamp.Chapter
 
 		public Student()
         {
-
+			Id = new Guid();
         }
 
         public Student(Guid id)
@@ -29,13 +29,6 @@ namespace BootCamp.Chapter
 			Name = name;
 			Surname = surname;
 		}
-
-		public void LearnFrom<TTeacher, TSubject>(TTeacher teacher)
-            where TTeacher : ITeacher<TSubject>
-            where TSubject : ISubject
-        {
-            throw new NotImplementedException();
-        }
     }
 
 	public class HighSchoolStudent : Student
