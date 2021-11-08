@@ -25,9 +25,14 @@ namespace BootCamp.Chapter
             _studentList.Add(student);
         }
 
-        public void Get(Guid id)
+        public TStudent GetStudentById(Guid id)
         {
-            throw new NotImplementedException();
+            foreach (var student in _studentList)
+            {
+                if (student.Id == id) return student;
+            }
+
+            return null;
         }
     }
 
