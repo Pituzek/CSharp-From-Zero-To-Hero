@@ -31,6 +31,10 @@ namespace BootCamp.Chapter
 		}
     }
 
+	public class MiddleSchoolStudent : Student
+	{
+	}
+
 	public class HighSchoolStudent : Student
 	{
 	}

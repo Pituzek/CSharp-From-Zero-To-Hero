@@ -13,25 +13,25 @@ namespace BootCamp.Chapter
 
         public School()
         {
-            Name = nameof();
+            //Name = nameof();
         }
         public School(string name)
         {
             Name = name;
         }
 
-        public void Add(List<TStudent> student)
+        public void Add(TStudent student)
         {
             _studentList.Add(student);
         }
 
-        public void Get<TStudent1>(Guid id)
+        public void Get(Guid id)
         {
             throw new NotImplementedException();
         }
     }
 
-    public class MiddleSchool : School
+    public class MiddleSchool : School<MiddleSchoolStudent>
     {
         public MiddleSchool()
         {
@@ -43,7 +43,7 @@ namespace BootCamp.Chapter
         }
     }
 
-    public class HighSchool : School
+    public class HighSchool : School<HighSchoolStudent>
     {
         public HighSchool()
         {
@@ -55,7 +55,7 @@ namespace BootCamp.Chapter
         }
     }
 
-    public class University : School
+    public class University : School<UniversityStudent>
     {
         public University()
         {
