@@ -13,7 +13,7 @@ namespace BootCamp.Chapter
 
 		public Student()
         {
-			Id = new Guid();
+			Id = Guid.NewGuid();
         }
 
         public Student(Guid id)
