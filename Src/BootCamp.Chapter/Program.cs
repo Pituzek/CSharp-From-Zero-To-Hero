@@ -6,7 +6,11 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
+            School s = new School();
 
+            MiddleSchool middleS = new MiddleSchool();
+
+            Console.ReadKey();
         }
     }
 }
