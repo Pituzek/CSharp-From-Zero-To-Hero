@@ -6,7 +6,7 @@ namespace BootCamp.Chapter.Hints
 {
     // Leave it empty, because subjects are unrelated. Just for simulation
     // Alternatively use base Subject class.
-    interface ISubject { }
+    public interface ISubject { }
 
     // For simulation you can store a specific teacher to school.
     // However for the interface based on requirements it is not needed.
@@ -17,7 +17,7 @@ namespace BootCamp.Chapter.Hints
         // Get
     }
 
-    interface IStudent
+    public interface IStudent
     {
         long Id { get; }
 
@@ -27,7 +27,7 @@ namespace BootCamp.Chapter.Hints
     }
 
 
-    interface ITeacher<TSubject> where TSubject : ISubject
+    public interface ITeacher<TSubject> where TSubject : ISubject
     {
         TSubject ProduceMaterial();
     }
