@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BootCamp.Chapter.Hints;
+using System;
 
 namespace BootCamp.Chapter
 {
@@ -10,6 +11,8 @@ namespace BootCamp.Chapter
             MiddleSchoolStudent middleStudent = new MiddleSchoolStudent(Guid.NewGuid(), "Peter", "N");
             MiddleSchoolStudent middleStudent2 = new MiddleSchoolStudent(Guid.NewGuid(), "John", "H");
             MiddleSchoolStudent middleStudent3 = new MiddleSchoolStudent(Guid.NewGuid(), "Aria", "J");
+
+            ISchool<MiddleSchoolStudent> midSchool = new MiddleSchool();
 
             HighSchoolStudent highStudent = new HighSchoolStudent();
 
