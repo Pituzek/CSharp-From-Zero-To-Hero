@@ -8,15 +8,20 @@ namespace BootCamp.Chapter.Hints
     // Alternatively use base Subject class.
     public interface ISubject { }
 
+    public interface IClass<out TStudent> where TStudent : Student
+    {
+        TStudent GetStudentById(Guid id);
+    }
+
     // For simulation you can store a specific teacher to school.
     // However for the interface based on requirements it is not needed.
-    interface ISchool<TStudent> where TStudent : Student
+    interface ISchool<in TStudent> where TStudent : Student
     {
         // Missing:
         // Add
         // Get
         void Add(TStudent student);
-        TStudent GetStudentById(Guid id);
+        
     }
 
     public interface IStudent

@@ -13,7 +13,7 @@ namespace BootCamp.Chapter
 
         public School()
         {
-            //Name = nameof();
+            //Name = nameof(School);
         }
         public School(string name)
         {

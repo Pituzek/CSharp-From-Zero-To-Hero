@@ -12,7 +12,7 @@ namespace BootCamp.Chapter
             MiddleSchoolStudent middleStudent2 = new MiddleSchoolStudent(Guid.NewGuid(), "John", "H");
             MiddleSchoolStudent middleStudent3 = new MiddleSchoolStudent(Guid.NewGuid(), "Aria", "J");
 
-            ISchool<MiddleSchoolStudent> midSchool = new MiddleSchool();
+            ISchool<MiddleSchoolStudent> midSchool = new MiddleSchoolStudent();
 
             HighSchoolStudent highStudent = new HighSchoolStudent();
 
