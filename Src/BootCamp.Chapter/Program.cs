@@ -1,5 +1,6 @@
 ﻿using BootCamp.Chapter.Hints;
 using System;
+using System.Collections.Generic;
 
 namespace BootCamp.Chapter
 {
@@ -7,22 +8,35 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            MiddleSchool middleSChool = new MiddleSchool();
+
+            ///<summary>
+            ///     Specific schools have ability to add or get specific students
+            ///</summary>
+            test3();
+
+            Console.ReadKey();
+        }
+
+        public static void test3()
+        {
+
             MiddleSchoolStudent middleStudent = new MiddleSchoolStudent(Guid.NewGuid(), "Peter", "N");
             MiddleSchoolStudent middleStudent2 = new MiddleSchoolStudent(Guid.NewGuid(), "John", "H");
             MiddleSchoolStudent middleStudent3 = new MiddleSchoolStudent(Guid.NewGuid(), "Aria", "J");
 
-            ISchool<MiddleSchoolStudent> midSchool = new MiddleSchoolStudent();
+            ISchool<MiddleSchoolStudent> midSchool = new MiddleSchool();
+            ISchool<HighSchoolStudent> highSchool = new HighSchool();
 
             HighSchoolStudent highStudent = new HighSchoolStudent();
+            //midSchool.Add(highStudent);
 
-            middleSChool.Add(middleStudent);
-            middleSChool.Add(middleStudent2);
-            middleSChool.Add(middleStudent3);
+            midSchool.Add(middleStudent);
+            midSchool.Add(middleStudent2);
+            midSchool.Add(middleStudent3);
 
-            Console.WriteLine(middleSChool.GetStudentById(middleStudent2.Id));
+            highSchool.Add(highStudent);
 
-            Console.ReadKey();
+            Console.WriteLine(midSchool.GetStudentById(middleStudent2.Id));
         }
     }
 }

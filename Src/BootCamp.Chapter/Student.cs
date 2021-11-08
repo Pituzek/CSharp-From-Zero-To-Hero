@@ -11,16 +11,16 @@ namespace BootCamp.Chapter
 		public string Name { get; set; }
 		public string Surname { get; set; }
 
-		public Student()
+		public Student() : this(Guid.NewGuid(), "", "")
         {
-			Id = Guid.NewGuid();
-        }
+		}
 
-        public Student(Guid id)
+		public Student(Guid id) : this (id, "", "")
 		{
-			Id = id;
-			Name = "";
-			Surname = "";
+		}
+
+		public Student(Guid id, string name) : this(id, name, "")
+		{
 		}
 
 		public Student(Guid id, string name, string surname)

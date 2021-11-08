@@ -8,28 +8,33 @@ namespace BootCamp.Chapter
     public class School<TStudent> : ISchool<TStudent> where TStudent : Student
     {
         public string Name { get; set; }
-        public TStudent student;
+
         public List<TStudent> _studentList { get; set; } = new List<TStudent>();
 
-        public School()
+        public School() : this ("School", new List<TStudent>())
         {
-            //Name = nameof(School);
         }
-        public School(string name)
+
+        public School(string name) : this(name, new List<TStudent>())
+        {
+        }
+
+        public School(string name, List<TStudent> studentsList)
         {
             Name = name;
+            _studentList = studentsList;
         }
 
         public void Add(TStudent student)
         {
-            _studentList.Add(student);
+            _studentList?.Add(student);
         }
 
         public TStudent GetStudentById(Guid id)
         {
             foreach (var student in _studentList)
             {
-                if (student.Id == id) return student;
+                if (student?.Id == id) return student;
             }
 
             return null;
@@ -38,36 +43,45 @@ namespace BootCamp.Chapter
 
     public class MiddleSchool : School<MiddleSchoolStudent>
     {
-        public MiddleSchool()
+        public MiddleSchool() : base(nameof(MiddleSchool), new List<MiddleSchoolStudent>())
         {
-            Name = nameof(MiddleSchool);
         }
 
-        public MiddleSchool(string name) : base(name)
+        public MiddleSchool(string name) : base(name, new List<MiddleSchoolStudent>())
+        {
+        }
+
+        public MiddleSchool(string name, List<MiddleSchoolStudent> studentsList) : base(name, studentsList)
         {
         }
     }
 
     public class HighSchool : School<HighSchoolStudent>
     {
-        public HighSchool()
+        public HighSchool() : base(nameof(MiddleSchool), new List<HighSchoolStudent>())
         {
-            Name = nameof(HighSchool);
         }
 
-        public HighSchool(string name) : base(name)
+        public HighSchool(string name) : base(name, new List<HighSchoolStudent>())
+        {
+        }
+
+        public HighSchool(string name, List<HighSchoolStudent> studentsList) : base(name, studentsList)
         {
         }
     }
 
     public class University : School<UniversityStudent>
     {
-        public University()
+        public University() : base(nameof(MiddleSchool), new List<UniversityStudent>())
         {
-            Name = nameof(University);
         }
 
-        public University(string name) : base(name)
+        public University(string name) : base(name, new List<UniversityStudent>())
+        {
+        }
+
+        public University(string name, List<UniversityStudent> studentsList) : base(name, studentsList)
         {
         }
     }
