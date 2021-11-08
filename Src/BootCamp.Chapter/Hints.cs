@@ -19,7 +19,8 @@ namespace BootCamp.Chapter.Hints
 
     public interface IStudent
     {
-        long Id { get; }
+        //long Id { get; }
+        Guid Id { get; }
 
         void LearnFrom<TTeacher, TSubject>(TTeacher teacher)
             where TTeacher : ITeacher<TSubject>
