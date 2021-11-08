@@ -4,13 +4,13 @@ using System.Text;
 
 namespace BootCamp.Chapter
 {
-    public class Subject
+    public class Subject<TSubject> where TSubject : Subject
     {
         public string Name { get; set; }
 
         public Subject()
         {
-            Name = nameof(Subject);
+            //Name = nameof(Subject);
         }
 
         public Subject(string name)
@@ -19,7 +19,7 @@ namespace BootCamp.Chapter
         }
     }
 
-    public class Maths : Subject
+    public class Maths : Subject<Maths>
     {
         public Maths()
         {
