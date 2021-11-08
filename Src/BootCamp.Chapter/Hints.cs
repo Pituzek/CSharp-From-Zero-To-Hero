@@ -10,11 +10,13 @@ namespace BootCamp.Chapter.Hints
 
     // For simulation you can store a specific teacher to school.
     // However for the interface based on requirements it is not needed.
-    interface ISchool<TStudent> where TStudent : IStudent
+    interface ISchool<in TStudent> where TStudent : IStudent
     {
         // Missing:
         // Add
         // Get
+        void Add<TStudent>(List<TStudent> student);
+        void Get<TStudent>(Guid id);
     }
 
     public interface IStudent

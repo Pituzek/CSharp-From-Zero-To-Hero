@@ -1,20 +1,33 @@
-﻿using System;
+﻿using BootCamp.Chapter.Hints;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace BootCamp.Chapter
 {
-    public class School
+    public class School<TStudent> : ISchool<TStudent> where TStudent : Student
     {
         public string Name { get; set; }
+        public TStudent student;
+        public List<TStudent> _studentList { get; set; }
 
         public School()
         {
-            Name = nameof(School);
+            Name = nameof();
         }
         public School(string name)
         {
             Name = name;
+        }
+
+        public void Add(List<TStudent> student)
+        {
+            _studentList.Add(student);
+        }
+
+        public void Get<TStudent1>(Guid id)
+        {
+            throw new NotImplementedException();
         }
     }
 
