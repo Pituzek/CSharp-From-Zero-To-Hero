@@ -29,17 +29,55 @@ namespace BootCamp.Chapter
 			Name = name;
 			Surname = surname;
 		}
+
+        public override string ToString()
+        {
+			return String.Format($"{Name} {Surname}");
+        }
     }
 
 	public class MiddleSchoolStudent : Student
 	{
+		public MiddleSchoolStudent() : base()
+		{
+		}
+
+		public MiddleSchoolStudent(Guid id) : base (id)
+		{
+		}
+
+		public MiddleSchoolStudent(Guid id, string name, string surname) : base(id, name, surname)
+		{
+		}
 	}
 
 	public class HighSchoolStudent : Student
 	{
+		public HighSchoolStudent() : base()
+		{
+		}
+
+		public HighSchoolStudent(Guid id) : base(id)
+		{
+		}
+
+		public HighSchoolStudent(Guid id, string name, string surname) : base(id, name, surname)
+		{
+		}
 	}
 
 	public class UniversityStudent : Student
 	{
+		public UniversityStudent() : base()
+		{
+		}
+
+		public UniversityStudent(Guid id) : base(id)
+		{
+		}
+
+		public UniversityStudent(Guid id, string name, string surname) : base(id, name, surname)
+		{
+		}
 	}
 }

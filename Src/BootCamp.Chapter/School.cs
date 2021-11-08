@@ -9,7 +9,7 @@ namespace BootCamp.Chapter
     {
         public string Name { get; set; }
         public TStudent student;
-        public List<TStudent> _studentList { get; set; }
+        public List<TStudent> _studentList { get; set; } = new List<TStudent>();
 
         public School()
         {

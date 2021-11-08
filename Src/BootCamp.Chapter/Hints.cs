@@ -10,7 +10,7 @@ namespace BootCamp.Chapter.Hints
 
     // For simulation you can store a specific teacher to school.
     // However for the interface based on requirements it is not needed.
-    interface ISchool<in TStudent> where TStudent : Student
+    interface ISchool<TStudent> where TStudent : Student
     {
         // Missing:
         // Add
