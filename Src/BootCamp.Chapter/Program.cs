@@ -10,11 +10,22 @@ namespace BootCamp.Chapter
         {
 
             ///<summary>
+            ///     Specific teachers produce material for a specific subject  
+            /// </summary>
+            test2();
+
+            ///<summary>
             ///     Specific schools have ability to add or get specific students
             ///</summary>
             test3();
 
             Console.ReadKey();
+        }
+
+        public static void test2()
+        {
+            ITeacher<Maths> mathTeacher = new Teacher();
+
         }
 
         public static void test3()

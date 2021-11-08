@@ -21,8 +21,8 @@ namespace BootCamp.Chapter
 
         public TSubject ProduceMaterial()
         {
-            TSubject t = new TSubject();
-            return TSubject;
+            //TSubject t = new TSubject();
+            return new TSubject();
         }
     }
     public class HighSchoolTeacher : Teacher<Subject>
