@@ -5,13 +5,11 @@ using System.Text;
 
 namespace BootCamp.Chapter
 {
-    public class Student : IStudent
+    public class Student
     {
 		public Guid Id { get; }
 		public string Name { get; set; }
 		public string Surname { get; set; }
-
-        long IStudent.Id => throw new NotImplementedException();
 
 		public Student()
         {
