@@ -26,7 +26,7 @@ namespace BootCamp.Chapter
         public static void test1And2()
         {
             ITeacher<Maths> mathTeacher = new MathTeacher();
-            var mathMaterial = mathTeacher.ProduceMaterial();
+            Maths mathMaterial = mathTeacher.ProduceMaterial();
 
             ISchool<MiddleSchoolStudent> midSchool = new MiddleSchool();
             MiddleSchoolStudent middleStudent = new MiddleSchoolStudent(Guid.NewGuid(), "Peter", "N");
