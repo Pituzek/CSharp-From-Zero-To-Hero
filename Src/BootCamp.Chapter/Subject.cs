@@ -1,34 +1,44 @@
-﻿using System;
+﻿using BootCamp.Chapter.Hints;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace BootCamp.Chapter
 {
-    public class Subject<TSubject> where TSubject : Subject
+    public class Subject : ISubject
     {
         public string Name { get; set; }
 
         public Subject()
         {
-            //Name = nameof(Subject);
+            Name = nameof(Subject);
         }
 
         public Subject(string name)
         {
             Name = name;
         }
+
+        public override string ToString()
+        {
+            return string.Format($"{Name}");
+        }
     }
 
-    public class Maths : Subject<Maths>
+    public class Maths : Subject
     {
         public Maths()
         {
             Name = nameof(Maths);
         }
 
-        public Maths(string name)
+        public Maths(string name) : base(name)
         {
-            Name = name;
+        }
+
+        public override string ToString()
+        {
+            return string.Format($"{Name}");
         }
     }
 
@@ -39,9 +49,8 @@ namespace BootCamp.Chapter
             Name = nameof(Art);
         }
 
-        public Art(string name)
+        public Art(string name) : base(name)
         {
-            Name = name;
         }
     }
 
@@ -52,9 +61,8 @@ namespace BootCamp.Chapter
             Name = nameof(Music);
         }
 
-        public Music(string name)
+        public Music(string name) : base(name)
         {
-            Name = name;
         }
     }
 
@@ -65,9 +73,8 @@ namespace BootCamp.Chapter
             Name = nameof(PE);
         }
 
-        public PE(string name)
+        public PE(string name) : base(name)
         {
-            Name = name;
         }
     }
 
@@ -78,9 +85,8 @@ namespace BootCamp.Chapter
             Name = nameof(English);
         }
 
-        public English(string name)
+        public English(string name) : base(name)
         {
-            Name = name;
         }
     }
 
@@ -91,9 +97,8 @@ namespace BootCamp.Chapter
             Name = nameof(Programming);
         }
 
-        public Programming(string name)
+        public Programming(string name) : base(name)
         {
-            Name = name;
         }
     }
 }

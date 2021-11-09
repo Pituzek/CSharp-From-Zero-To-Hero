@@ -29,7 +29,7 @@ namespace BootCamp.Chapter.Hints
         //long Id { get; }
         Guid Id { get; }
 
-        void LearnFrom<TTeacher, TSubject>(TTeacher teacher)
+        void LearnFrom<TTeacher, TSubject>(TTeacher teacher, TSubject subject)
             where TTeacher : ITeacher<TSubject>
             where TSubject : ISubject;
     }

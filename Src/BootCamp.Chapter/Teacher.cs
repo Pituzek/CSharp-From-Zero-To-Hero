@@ -11,7 +11,7 @@ namespace BootCamp.Chapter
 
         public Teacher()
         {
-            //Name = nameof(Teacher);
+            Name = nameof(TSubject);
         }
 
         public Teacher(string name)
@@ -25,40 +25,83 @@ namespace BootCamp.Chapter
             return new TSubject();
         }
     }
-    public class HighSchoolTeacher : Teacher<Subject>
+    public class MathTeacher : Teacher<Maths>
     {
-        public HighSchoolTeacher()
+        public MathTeacher()
         {
-            Name = nameof(HighSchoolTeacher);
+            Name = nameof(MathTeacher);
         }
 
-        public HighSchoolTeacher(string name)
+        public MathTeacher(string name)
+        {
+            Name = name;
+        }
+
+        public override string ToString()
+        {
+            return string.Format($"{Name}");
+        }
+    }
+
+    public class ArtTeacher : Teacher<Art>
+    {
+        public ArtTeacher()
+        {
+            Name = nameof(ArtTeacher);
+        }
+
+        public ArtTeacher(string name)
         {
             Name = name;
         }
     }
 
-    public class MiddleSchoolTeacher : Teacher<Subject>
+    public class MusicTeacher : Teacher<Music>
     {
-        public MiddleSchoolTeacher()
+        public MusicTeacher()
         {
-            Name = nameof(MiddleSchoolTeacher);
+            Name = nameof(MusicTeacher);
         }
 
-        public MiddleSchoolTeacher(string name)
+        public MusicTeacher(string name)
+        {
+            Name = name;
+        }
+    }
+    public class PETeacher : Teacher<PE>
+    {
+        public PETeacher()
+        {
+            Name = nameof(PETeacher);
+        }
+
+        public PETeacher(string name)
         {
             Name = name;
         }
     }
 
-    public class UniversityTeacher : Teacher<Subject>
+    public class EnglishTeacher : Teacher<English>
     {
-        public UniversityTeacher()
+        public EnglishTeacher()
         {
-            Name = nameof(UniversityTeacher);
+            Name = nameof(EnglishTeacher);
         }
 
-        public UniversityTeacher(string name)
+        public EnglishTeacher(string name)
+        {
+            Name = name;
+        }
+    }
+
+    public class ProgrammingTeacher : Teacher<Programming>
+    {
+        public ProgrammingTeacher()
+        {
+            Name = nameof(ProgrammingTeacher);
+        }
+
+        public ProgrammingTeacher(string name)
         {
             Name = name;
         }

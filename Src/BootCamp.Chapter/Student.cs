@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BootCamp.Chapter
 {
-    public class Student
+    public class Student : IStudent
     {
 		public Guid Id { get; }
 		public string Name { get; set; }
@@ -33,6 +33,14 @@ namespace BootCamp.Chapter
         public override string ToString()
         {
 			return String.Format($"{Name} {Surname}");
+        }
+
+        public void LearnFrom<TTeacher, TSubject>(TTeacher teacher, TSubject subject)
+            where TTeacher : ITeacher<TSubject>
+            where TSubject : ISubject
+        {
+			
+			Console.WriteLine($"Learning {subject.ToString()} from {teacher.ToString()}");
         }
     }
 

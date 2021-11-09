@@ -10,9 +10,10 @@ namespace BootCamp.Chapter
         {
 
             ///<summary>
-            ///     Specific teachers produce material for a specific subject  
+            ///     Specific teachers produce material for a specific subject 
+            ///     Students can learn from **any teacher** (by consuming the material a teacher produced)
             /// </summary>
-            test2();
+            test1And2();
 
             ///<summary>
             ///     Specific schools have ability to add or get specific students
@@ -22,10 +23,15 @@ namespace BootCamp.Chapter
             Console.ReadKey();
         }
 
-        public static void test2()
+        public static void test1And2()
         {
-            ITeacher<Maths> mathTeacher = new Teacher();
+            ITeacher<Maths> mathTeacher = new MathTeacher();
+            var mathMaterial = mathTeacher.ProduceMaterial();
 
+            ISchool<MiddleSchoolStudent> midSchool = new MiddleSchool();
+            MiddleSchoolStudent middleStudent = new MiddleSchoolStudent(Guid.NewGuid(), "Peter", "N");
+            middleStudent.LearnFrom<MathTeacher, Maths>((MathTeacher)mathTeacher,(Maths)mathMaterial);
+            midSchool.Add(middleStudent);
         }
 
         public static void test3()
