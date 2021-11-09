@@ -22,6 +22,8 @@ namespace BootCamp.Chapter.Hints
         // Get
         void Add(TStudent student);
         TStudent GetStudentById(Guid id);
+
+        //Guid Get(TStudent id); dziala z in
     }
 
     public interface IStudent
