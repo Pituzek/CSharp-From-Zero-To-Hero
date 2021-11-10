@@ -39,7 +39,6 @@ namespace BootCamp.Chapter
             where TTeacher : ITeacher<TSubject>
             where TSubject : ISubject
         {
-			
 			Console.WriteLine($"Learning {subject.ToString()} from {teacher.ToString()}");
         }
     }
