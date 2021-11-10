@@ -43,8 +43,7 @@ namespace BootCamp.Chapter.Hints
             where TSubject : ISubject;
     }
 
-
-    public interface ITeacher<TSubject> where TSubject : ISubject
+    public interface ITeacher<out TSubject> where TSubject : ISubject
     {
         TSubject ProduceMaterial();
     }
