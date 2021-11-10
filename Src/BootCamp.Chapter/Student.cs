@@ -6,7 +6,7 @@ using System.Text;
 namespace BootCamp.Chapter
 {
     public class Student : IStudent
-    {
+	{
 		public Guid Id { get; }
 		public string Name { get; set; }
 		public string Surname { get; set; }

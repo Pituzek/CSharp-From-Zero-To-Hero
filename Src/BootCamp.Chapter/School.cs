@@ -5,7 +5,8 @@ using System.Text;
 
 namespace BootCamp.Chapter
 {
-    public class School<TStudent> : ISchool<TStudent> where TStudent : Student
+    //public class School<TStudent> : ISchool<TStudent>, IClass<TStudent> where TStudent : Student
+    public class School<TStudent> : IBuilding<TStudent> where TStudent : Student
     {
         public string Name { get; set; }
 
@@ -30,6 +31,16 @@ namespace BootCamp.Chapter
             _studentList?.Add(student);
         }
 
+        public void PrintStudentById(Guid id)
+        {
+            foreach (var student in _studentList)
+            {
+                if (student?.Id == id)
+                {
+                    Console.WriteLine($"{student.Name} {student.Id}");
+                }
+            }
+        }
         public TStudent GetStudentById(Guid id)
         {
             foreach (var student in _studentList)

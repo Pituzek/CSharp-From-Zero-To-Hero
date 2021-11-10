@@ -53,7 +53,12 @@ namespace BootCamp.Chapter
 
             highSchool.Add(highStudent);
 
-            Console.WriteLine(midSchool.GetStudentById(middleStudent2.Id));
+            MiddleSchool midTest = new MiddleSchool();
+            Console.WriteLine(midTest.GetStudentById(middleStudent2.Id));
+
+            //Console.WriteLine(midSchool.GetStudentById(middleStudent2.Id));
+
+            midSchool.PrintStudentById(middleStudent2.Id);
         }
     }
 }
