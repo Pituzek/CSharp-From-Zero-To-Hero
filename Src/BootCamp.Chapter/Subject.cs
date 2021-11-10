@@ -52,6 +52,11 @@ namespace BootCamp.Chapter
         public Art(string name) : base(name)
         {
         }
+
+        public override string ToString()
+        {
+            return string.Format($"{Name}");
+        }
     }
 
     public class Music : Subject
@@ -63,6 +68,11 @@ namespace BootCamp.Chapter
 
         public Music(string name) : base(name)
         {
+        }
+        
+        public override string ToString()
+        {
+            return string.Format($"{Name}");
         }
     }
 
@@ -76,6 +86,11 @@ namespace BootCamp.Chapter
         public PE(string name) : base(name)
         {
         }
+                
+        public override string ToString()
+        {
+            return string.Format($"{Name}");
+        }
     }
 
     public class English : Subject
@@ -88,6 +103,11 @@ namespace BootCamp.Chapter
         public English(string name) : base(name)
         {
         }
+                
+        public override string ToString()
+        {
+            return string.Format($"{Name}");
+        }
     }
 
     public class Programming : Subject
@@ -99,6 +119,11 @@ namespace BootCamp.Chapter
 
         public Programming(string name) : base(name)
         {
+        }
+                
+        public override string ToString()
+        {
+            return string.Format($"{Name}");
         }
     }
 }
