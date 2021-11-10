@@ -54,6 +54,7 @@ namespace BootCamp.Chapter
             highSchool.Add(highStudent);
 
             MiddleSchool midTest = new MiddleSchool();
+            midTest.Add(middleStudent2);
             Console.WriteLine(midTest.GetStudentById(middleStudent2.Id));
 
             IBuilding<MiddleSchoolStudent> mid2 = new MiddleSchool();
