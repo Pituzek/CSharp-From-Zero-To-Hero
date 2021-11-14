@@ -9,6 +9,19 @@ namespace BootCamp.Chapter
         static void Main(string[] args)
         {
 
+            ITeacher<Maths> midTeach = new Teacher<Maths>();
+            ITeacher<Art> artTeacher = new MiddleSchoolTeacher<Art>();
+
+            MiddleSchoolTeacher<Maths> test = new MiddleSchoolTeacher<Maths>();
+
+            MiddleSchoolStudent middleStudent = new MiddleSchoolStudent(Guid.NewGuid(), "Peter", "N");
+            HighSchoolStudent highStudent = new HighSchoolStudent(Guid.NewGuid(), "Johnny", "W");
+            Subject mathMaterial = midTeach.ProduceMaterial();
+            Subject artMaterial = artTeacher.ProduceMaterial();
+            middleStudent.LearnFrom<Teacher<Maths>, Maths>(midTeach);
+            middleStudent.LearnFrom<MiddleSchoolTeacher<Maths>, Maths>(test);
+            middleStudent.LearnFrom(artTeacher);
+
             ///<summary>
             ///     Specific teachers produce material for a specific subject 
             ///     Students can learn from **any teacher** (by consuming the material a teacher produced)
@@ -25,13 +38,13 @@ namespace BootCamp.Chapter
 
         public static void test1And2()
         {
-            ITeacher<Maths> mathTeacher = new MathTeacher();
-            Maths mathMaterial = mathTeacher.ProduceMaterial();
+            //ITeacher<Maths> mathTeacher = new MathTeacher();
+            //Maths mathMaterial = mathTeacher.ProduceMaterial();
 
-            ISchool<MiddleSchoolStudent> midSchool = new MiddleSchool();
-            MiddleSchoolStudent middleStudent = new MiddleSchoolStudent(Guid.NewGuid(), "Peter", "N");
-            middleStudent.LearnFrom<MathTeacher, Maths>((MathTeacher)mathTeacher,(Maths)mathMaterial);
-            midSchool.Add(middleStudent);
+            //ISchool<MiddleSchoolStudent> midSchool = new MiddleSchool();
+            //MiddleSchoolStudent middleStudent = new MiddleSchoolStudent(Guid.NewGuid(), "Peter", "N");
+            //middleStudent.LearnFrom<MathTeacher, Maths>((MathTeacher)mathTeacher,(Maths)mathMaterial);
+            //midSchool.Add(middleStudent);
         }
 
         public static void test3()
