@@ -4,6 +4,10 @@ using System.Text;
 
 namespace BootCamp.Chapter.Hints
 {
+    public interface IMaterial<in TSubject> : ISubject where TSubject : ISubject
+    {
+
+    }
     // Leave it empty, because subjects are unrelated. Just for simulation
     // Alternatively use base Subject class.
     public interface ISubject { }
@@ -38,7 +42,7 @@ namespace BootCamp.Chapter.Hints
         //long Id { get; }
         Guid Id { get; }
 
-        void LearnFrom<TTeacher, TSubject>(TTeacher teacher, TSubject subject)
+        void LearnFrom<TTeacher, TSubject>(TTeacher teacher)
             where TTeacher : ITeacher<TSubject>
             where TSubject : ISubject;
     }
@@ -46,5 +50,10 @@ namespace BootCamp.Chapter.Hints
     public interface ITeacher<out TSubject> where TSubject : ISubject
     {
         TSubject ProduceMaterial();
+    }
+
+    public interface ITeachGet<in TSubject> where TSubject : ISubject
+    {
+
     }
 }

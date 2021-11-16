@@ -11,7 +11,7 @@ namespace BootCamp.Chapter
 
         public Teacher()
         {
-            Name = nameof(TSubject);
+            Name = nameof(Teacher<TSubject>);
         }
 
         public Teacher(string name)
@@ -24,6 +24,21 @@ namespace BootCamp.Chapter
             //TSubject t = new TSubject();
             return new TSubject();
         }
+
+        public override string ToString()
+        {
+            return string.Format($"{Name}");
+        }
+    }
+
+    public class MiddleSchoolTeacher<TSubject> : Teacher<Subject>, ITeacher<TSubject>, ITeachGet<TSubject> where TSubject : ISubject, new()
+    {
+        public TSubject ProduceMaterial()
+        {
+            return new TSubject();
+        }
+
+  
     }
     public class MathTeacher : Teacher<Maths>
     {

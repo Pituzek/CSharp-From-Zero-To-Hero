@@ -9,18 +9,17 @@ namespace BootCamp.Chapter
         static void Main(string[] args)
         {
 
-            ITeacher<Maths> midTeach = new Teacher<Maths>();
+            ITeacher<Subject> midTeach = new Teacher<Maths>();
             ITeacher<Art> artTeacher = new MiddleSchoolTeacher<Art>();
 
             MiddleSchoolTeacher<Maths> test = new MiddleSchoolTeacher<Maths>();
 
             MiddleSchoolStudent middleStudent = new MiddleSchoolStudent(Guid.NewGuid(), "Peter", "N");
             HighSchoolStudent highStudent = new HighSchoolStudent(Guid.NewGuid(), "Johnny", "W");
-            Subject mathMaterial = midTeach.ProduceMaterial();
+            ISubject mathMaterial2 = midTeach.ProduceMaterial();
+            ISubject mathMaterial = midTeach.ProduceMaterial();
             Subject artMaterial = artTeacher.ProduceMaterial();
-            middleStudent.LearnFrom<Teacher<Maths>, Maths>(midTeach);
-            middleStudent.LearnFrom<MiddleSchoolTeacher<Maths>, Maths>(test);
-            middleStudent.LearnFrom(artTeacher);
+            middleStudent.LearnFrom<ITeacher<Subject>, ISubject>(midTeach, mathMaterial2);
 
             ///<summary>
             ///     Specific teachers produce material for a specific subject 

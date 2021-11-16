@@ -25,7 +25,7 @@ namespace BootCamp.Chapter
         }
     }
 
-    public class Maths : Subject
+    public class Maths : Subject, ISubject
     {
         public Maths()
         {
@@ -42,7 +42,7 @@ namespace BootCamp.Chapter
         }
     }
 
-    public class Art : Subject
+    public class Art : Subject, ISubject
     {
         public Art()
         {
@@ -59,7 +59,7 @@ namespace BootCamp.Chapter
         }
     }
 
-    public class Music : Subject
+    public class Music : Subject, ISubject
     {
         public Music()
         {
@@ -76,7 +76,7 @@ namespace BootCamp.Chapter
         }
     }
 
-    public class PE : Subject
+    public class PE : Subject, ISubject
     {
         public PE()
         {
@@ -93,7 +93,7 @@ namespace BootCamp.Chapter
         }
     }
 
-    public class English : Subject
+    public class English : Subject, ISubject
     {
         public English()
         {
@@ -110,7 +110,7 @@ namespace BootCamp.Chapter
         }
     }
 
-    public class Programming : Subject
+    public class Programming : Subject, ISubject
     {
         public Programming()
         {
