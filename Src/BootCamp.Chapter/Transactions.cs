@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace BootCamp.Chapter
 {
@@ -9,36 +10,48 @@ namespace BootCamp.Chapter
     {
         //Shop,City,Street,Item,DateTime,Price
         private string shop;
+
+        [JsonProperty("Shop")]
         public string Shop
         {
             get { return this.shop; }
         }
 
         private string city;
+
+        [JsonProperty("City")]
         public string City
         {
             get { return this.city; }
         }
 
         private string street;
+
+        [JsonProperty("Street")]
         public string Street
         {
             get { return this.street; }
         }
 
         private string item;
+
+        [JsonProperty("Item")]
         public string Item
         {
             get { return this.item; }
         }
 
         private DateTime time;
+
+        [JsonProperty("DateTime")]
         public DateTime Time
         {
             get { return this.time;}
         }
 
         private decimal price;
+
+        [JsonProperty("Price")]
         public decimal Price
         {
             get { return this.price; }
@@ -51,22 +64,24 @@ namespace BootCamp.Chapter
         //    //set { this.transactionList = value; }
         //}
 
-        public Transactions(string shop, string city, string street, string item, string dateTime,  string price)
+        [JsonConstructor]
+        public Transactions(string Shop, string City, string Street, string Item, string DateTime,  string Price)
         {
-            this.shop = shop;
-            this.city = city;
-            this.street = street;
-            this.item = item;
+            this.shop = Shop;
+            this.city = City;
+            this.street = Street;
+            this.item = Item;
 
             CultureInfo culture = new CultureInfo("en-US");
-            DateTime tempDate = Convert.ToDateTime(dateTime, culture);
+            DateTime tempDate = Convert.ToDateTime(DateTime, culture);
             this.time = tempDate;
 
-            bool ok = decimal.TryParse(price, out decimal result);
+            bool ok = decimal.TryParse(Price, out decimal result);
             this.price = ok ? result : -1;
 
             //AddTransaction(this);
         }
+
 
         //public void AddTransaction(Transactions items)
         //{

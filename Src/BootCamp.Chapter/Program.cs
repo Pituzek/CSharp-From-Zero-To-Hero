@@ -66,7 +66,10 @@ namespace BootCamp.Chapter
             ///<summary>
             ///     JSON data import
             /// </summary>
-            var json = JsonConvert.DeserializeObject("Transactions.json");
+            /// 
+            string fileName = @"C:\Users\piotr\Source\Repos\CSharp-From-Zero-To-Hero\Tests\BootCamp.Chapter.Tests\Input\Transactions.json";
+            string jsonString = File.ReadAllText(fileName);
+            var transactionsReadFromJson = JsonConvert.DeserializeObject<Transactions>(jsonString);
 
             dataInput.ImportTransactionsDataT(filePath);
 
