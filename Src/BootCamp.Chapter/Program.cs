@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace BootCamp.Chapter
 {
@@ -61,6 +62,11 @@ namespace BootCamp.Chapter
                 }
                 outputFilePath = args[2];
             }
+
+            ///<summary>
+            ///     JSON data import
+            /// </summary>
+            var json = JsonConvert.DeserializeObject("Transactions.json");
 
             dataInput.ImportTransactionsDataT(filePath);
 
