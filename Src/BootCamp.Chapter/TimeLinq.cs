@@ -6,7 +6,7 @@ using System.Text;
 
 namespace BootCamp.Chapter
 {
-    public static class Time
+    public static class TimeLinq
     {
         public static void GroupByShopName(List<Transactions> data)
         {
@@ -119,6 +119,23 @@ namespace BootCamp.Chapter
                 {
                     Console.Write(value);
                     string input = ("Rush hour: " + value);
+                    rushHourDataSave.Add(input);
+                }
+                value++;
+            }
+        }
+
+        public static void GetRushHourInt(List<string> avgMoneyPerHour, List<string> rushHourDataSave)
+        {
+            var rushHourValue = avgMoneyPerHour.Max();
+            var rushHour = avgMoneyPerHour.Select(x => x == rushHourValue).ToList();
+            int value = 0;
+            foreach (var hour in rushHour)
+            {
+                if (hour == true)
+                {
+                    Console.Write(value);
+                    string input = value.ToString();
                     rushHourDataSave.Add(input);
                 }
                 value++;

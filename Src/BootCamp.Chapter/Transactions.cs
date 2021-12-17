@@ -75,7 +75,7 @@ namespace BootCamp.Chapter
             DateTime tempDate = Convert.ToDateTime(DateTime, culture);
             this.time = tempDate;
 
-            bool ok = decimal.TryParse(Price, out decimal result);
+            bool ok = decimal.TryParse(Price.Replace("€", ""), out decimal result);
             this.priceDec = ok ? result : -1;
 
             this.Price = Price;

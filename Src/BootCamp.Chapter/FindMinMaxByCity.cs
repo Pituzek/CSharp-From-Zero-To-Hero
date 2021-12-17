@@ -50,6 +50,7 @@ namespace BootCamp.Chapter
         {
             var find = data.Max(city => city.TotalItemCount);
             var cityName = data.Where(city => city.TotalItemCount == find).ToList();
+            //var test = cityName.OrderByDescending(x => x.CityName).ToList(); // file has two cities which sold 3 items.. i can order by descending to output Springfield for tests
 
             return cityName[0].CityName;
         }

@@ -17,7 +17,7 @@ namespace BootCamp.Chapter
             if (command.Count > 2) shopName = command[1] + " " + command[2];
             if (command.Count == 2) shopName = command[1];
 
-            Time.GroupByShopName(dataInput.Data);
+            TimeLinq.GroupByShopName(dataInput.Data);
 
             var gatheredData2 = DailyRepData.DataList.Where(name => name.ShopName == shopName);
             var fullWeek = gatheredData2.Where(name => name.ShopName == shopName)

@@ -16,9 +16,6 @@ namespace BootCamp.Chapter
                 /// </summary>
                 FindMinMaxByCity.GroupDataByCity(dataInput.Data);
 
-                //var curDir = @"C:\Users\piotr\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Output";
-                var curDir = "";
-
                 ///<summary>
                 ///     search for min or max
                 /// </summary>            
@@ -28,24 +25,24 @@ namespace BootCamp.Chapter
                         if (command[1] == "items")
                         {
                             var cityNameWithLowestItemCount = FindMinMaxByCity.FindCityItemsMin(City.CityList);
-                            ExportDataToReport.PrintMinMaxReport(cityNameWithLowestItemCount, Path.Combine(curDir, outputFilePath), "CityItemsMin.csv");
+                            ExportDataToReport.PrintMinMaxReport(cityNameWithLowestItemCount, Path.Combine(outputFilePath), fileExtension); //"CityItemsMin.csv"
                         }
                         else
                         {
                             var cityNameWithLowestMoneyCount = FindMinMaxByCity.FindCityMoneyMin(City.CityList);
-                            ExportDataToReport.PrintMinMaxReport(cityNameWithLowestMoneyCount, Path.Combine(curDir, outputFilePath), "CityMoneyMin.csv");
+                            ExportDataToReport.PrintMinMaxReport(cityNameWithLowestMoneyCount, Path.Combine(outputFilePath), fileExtension); //"CityMoneyMin.csv"
                         }
                         break;
                     case "max":
                         if (command[1] == "items")
                         {
                             var cityNameWithMaxItemCount = FindMinMaxByCity.FindCityItemsMax(City.CityList);
-                            ExportDataToReport.PrintMinMaxReport(cityNameWithMaxItemCount, Path.Combine(curDir, outputFilePath), "CityItemsMax.csv");
+                            ExportDataToReport.PrintMinMaxReport(cityNameWithMaxItemCount, Path.Combine(outputFilePath), fileExtension); //"CityItemsMax.csv"
                         }
                         else
                         {
                             var cityNameWithMaxMoneyCount = FindMinMaxByCity.FindCityMoneyMax(City.CityList);
-                            ExportDataToReport.PrintMinMaxReport(cityNameWithMaxMoneyCount, Path.Combine(curDir, outputFilePath), "CityMoneyMax.csv");
+                            ExportDataToReport.PrintMinMaxReport(cityNameWithMaxMoneyCount, Path.Combine(outputFilePath), fileExtension); //"CityMoneyMax.csv"
                         }
                         break;
                 }

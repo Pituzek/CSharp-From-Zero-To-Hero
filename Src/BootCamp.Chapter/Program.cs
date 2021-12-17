@@ -96,7 +96,6 @@ namespace BootCamp.Chapter
                 /// 
                 string fileName = @"C:\Users\piotr\Source\Repos\CSharp-From-Zero-To-Hero\Tests\BootCamp.Chapter.Tests\Input\Transactions.json";
                 string jsonString = File.ReadAllText(fileName);
-                //var transactionImportOK = JsonConvert.DeserializeObject<List<TransactionsJSON>>(jsonString);
                 var transactionsReadFromJson = JsonConvert.DeserializeObject<List<Transactions>>(jsonString);
 
                 dataInput.AddTransactionList(transactionsReadFromJson);
@@ -146,7 +145,7 @@ namespace BootCamp.Chapter
                         ///<summary>
                         ///     FullDay.csv by "time" command, without time range
                         /// </summary>
-                        FilterByTime.FilterByTimeFullDay(dataInput, command, outputFilePath);
+                        FilterByTime.FilterByTimeFullDay(dataInput, command, outputFilePath, fileExtension);
                     }
                     else
                     {

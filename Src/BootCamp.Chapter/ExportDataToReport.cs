@@ -4,6 +4,7 @@ using System.Text;
 using System.IO;
 using System.Globalization;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace BootCamp.Chapter
 {
@@ -45,23 +46,52 @@ namespace BootCamp.Chapter
             }
         }
 
-        public static void PrintMinMaxReport(string cityName, string outputPath, string fileName)
+        public static void PrintMinMaxReport(string cityName, string outputPath, string fileExtension)
         {
             try
             {
-                string filePath = outputPath;
-                string dirPath = Path.GetDirectoryName(outputPath);
-                if (!Directory.Exists(outputPath))
-                    Directory.CreateDirectory(outputPath);
+                //string filePath = outputPath;
+                //string dirPath = Path.GetDirectoryName(outputPath);
+                //if (!Directory.Exists(outputPath))
+                //    Directory.CreateDirectory(outputPath);
 
-                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-                var enc1252 = Encoding.GetEncoding(1252);
+                bool isJson = fileExtension.Equals(".json");
+                bool isXml = fileExtension.Equals(".xml");
 
-                using (StreamWriter sw = new StreamWriter(Path.Combine(outputPath, fileName)))
+                if (isJson)
                 {
-                    CultureInfo invC = CultureInfo.InvariantCulture;
-                    sw.WriteLine(cityName);
+                    ///<summary>
+                    ///     Export to .json
+                    /// </summary>
+                    string fileName = outputPath;
+                    string jsonString = JsonConvert.SerializeObject(cityName);
+                    File.WriteAllText(fileName, jsonString);
+                    
                 }
+                else if (isXml)
+                {
+                    ///<summary>
+                    ///     Export to .xml
+                    /// </summary>
+                    Console.WriteLine("Write to xml not implemented");
+                    throw new NotImplementedException("Write to xml not implemented");
+                }
+
+                if (!isJson && !isXml)
+                {
+                    ///<summary>
+                    ///     Export data to .csv
+                    /// </summary>
+                    Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+                    var enc1252 = Encoding.GetEncoding(1252);
+
+                    using (StreamWriter sw = new StreamWriter(outputPath)) //Path.Combine(outputPath, fileName)
+                    {
+                        CultureInfo invC = CultureInfo.InvariantCulture;
+                        sw.WriteLine(cityName);
+                    }
+                }
+              
             }
             catch(Exception ex)
             {
