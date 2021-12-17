@@ -10,13 +10,17 @@ namespace BootCamp.Chapter
     {
         public static void Main(string[] args)
         {
-            ImportTransactionsData dataInput = new ImportTransactionsData();
-
-            string filePath = string.Empty;
             List<string> command = new List<string>();
-            string outputFilePath = string.Empty;
+
             DateTime startTime = new DateTime();
             DateTime endTime = new DateTime();
+
+            string filePath = string.Empty;
+            string outputFilePath = string.Empty;
+            string fileExtension = string.Empty;
+
+            bool isJson = false;
+            bool isXml = false;
 
             if (args == null || args.Length == 0)
             {
@@ -61,17 +65,57 @@ namespace BootCamp.Chapter
                     if (data != "") command.Add(data);
                 }
                 outputFilePath = args[2];
+
+                if (args[0].Contains(".json"))
+                {
+                    fileExtension = ".json";
+                    isJson = true;
+                    isXml = false;
+                }
+                else if (args[0].Contains(".xml"))
+                {
+                    fileExtension = ".xml";
+                    isXml = true;
+                    isJson = false;
+                }
+                else
+                {
+                    fileExtension = ".csv";
+                    isJson = false;
+                    isXml = false;
+                }
             }
 
-            ///<summary>
-            ///     JSON data import
-            /// </summary>
-            /// 
-            string fileName = @"C:\Users\piotr\Source\Repos\CSharp-From-Zero-To-Hero\Tests\BootCamp.Chapter.Tests\Input\Transactions.json";
-            string jsonString = File.ReadAllText(fileName);
-            var transactionsReadFromJson = JsonConvert.DeserializeObject<Transactions>(jsonString);
+            ImportTransactionsData dataInput = new ImportTransactionsData();
 
-            dataInput.ImportTransactionsDataT(filePath);
+            if (isJson)
+            {
+                ///<summary>
+                ///     Data import from .json
+                /// </summary>
+                /// 
+                string fileName = @"C:\Users\piotr\Source\Repos\CSharp-From-Zero-To-Hero\Tests\BootCamp.Chapter.Tests\Input\Transactions.json";
+                string jsonString = File.ReadAllText(fileName);
+                //var transactionImportOK = JsonConvert.DeserializeObject<List<TransactionsJSON>>(jsonString);
+                var transactionsReadFromJson = JsonConvert.DeserializeObject<List<Transactions>>(jsonString);
+
+                dataInput.AddTransactionList(transactionsReadFromJson);
+            }
+
+            if (isXml)
+            {
+                ///<summary>
+                ///     Data import from .xml
+                /// </summary>
+            }
+
+            if (!isJson && !isXml)
+            {
+                ///<summary>
+                ///     Data import from .csv
+                /// </summary>
+                dataInput.ImportTransactionsDataT(filePath);
+            }
 
             ///<summary>
             ///     Check imported data (for manual debug)
@@ -93,7 +137,7 @@ namespace BootCamp.Chapter
                     ///<summary>
                     ///      Find city name with min/max money/items
                     /// </summary>
-                    FilterByItemMoney.FindCityNameMinMax(dataInput, command, outputFilePath);
+                    FilterByItemMoney.FindCityNameMinMax(dataInput, command, outputFilePath, fileExtension);
                     break;
 
                 case "time":

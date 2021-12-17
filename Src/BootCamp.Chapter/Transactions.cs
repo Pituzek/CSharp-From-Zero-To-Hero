@@ -15,6 +15,7 @@ namespace BootCamp.Chapter
         public string Shop
         {
             get { return this.shop; }
+            set { this.shop = value; }
         }
 
         private string city;
@@ -23,6 +24,7 @@ namespace BootCamp.Chapter
         public string City
         {
             get { return this.city; }
+            set { this.city = value; }
         }
 
         private string street;
@@ -31,6 +33,7 @@ namespace BootCamp.Chapter
         public string Street
         {
             get { return this.street; }
+            set { this.Street = value; }
         }
 
         private string item;
@@ -39,6 +42,7 @@ namespace BootCamp.Chapter
         public string Item
         {
             get { return this.item; }
+            set { this.item = value; }
         }
 
         private DateTime time;
@@ -47,27 +51,22 @@ namespace BootCamp.Chapter
         public DateTime Time
         {
             get { return this.time;}
+            set { this.time = value; }
         }
 
-        private decimal price;
+        private decimal priceDec;
+
+        public decimal PriceDec
+        {
+            get { return this.priceDec; }
+        }
 
         [JsonProperty("Price")]
-        public decimal Price
-        {
-            get { return this.price; }
-        }
+        public string Price { get; set; }
 
-        //private List<Transactions> transactionList = new List<Transactions>();
-        //public List<Transactions> TransactionList
-        //{
-        //    get { return this.transactionList; }
-        //    //set { this.transactionList = value; }
-        //}
-
-        [JsonConstructor]
-        public Transactions(string Shop, string City, string Street, string Item, string DateTime,  string Price)
+        public Transactions(string shop, string City, string Street, string Item, string DateTime, string Price)
         {
-            this.shop = Shop;
+            this.shop = shop;
             this.city = City;
             this.street = Street;
             this.item = Item;
@@ -77,11 +76,12 @@ namespace BootCamp.Chapter
             this.time = tempDate;
 
             bool ok = decimal.TryParse(Price, out decimal result);
-            this.price = ok ? result : -1;
+            this.priceDec = ok ? result : -1;
+
+            this.Price = Price;
 
             //AddTransaction(this);
         }
-
 
         //public void AddTransaction(Transactions items)
         //{
@@ -90,7 +90,7 @@ namespace BootCamp.Chapter
 
         public override string ToString()
         {
-            return string.Format($"Name: {shop}\n City: {city}\n Street: {street}\n Item: {item}\n Time: {time}\n Price: {price}\n\n");
+            return string.Format($"Name: {shop}\n City: {city}\n Street: {street}\n Item: {item}\n Time: {time}\n Price: {priceDec}\n PriceString: {Price}\n");
         }
     }
 }

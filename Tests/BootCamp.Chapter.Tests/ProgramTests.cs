@@ -112,7 +112,7 @@ namespace BootCamp.Chapter.Tests
 
         public void Dispose()
         {
-            if (File.Exists(OutputFile))
+            if (File.Exists(OutputFile))//'C:\Users\piotr\Source\Repos\CSharp-From-Zero-To-Hero\Tests\BootCamp.Chapter
             {
                 File.Delete(OutputFile);
             }

@@ -7,7 +7,7 @@ namespace BootCamp.Chapter
 {
     class FilterByItemMoney
     {
-        public static void FindCityNameMinMax(ImportTransactionsData dataInput, List<string> command, string outputFilePath)
+        public static void FindCityNameMinMax(ImportTransactionsData dataInput, List<string> command, string outputFilePath, string fileExtension)
         {
             if (command[1] == "items" || command[1] == "money")
             {

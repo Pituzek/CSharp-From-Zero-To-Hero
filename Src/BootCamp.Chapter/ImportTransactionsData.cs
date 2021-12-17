@@ -10,6 +10,21 @@ namespace BootCamp.Chapter
     {
         public List<Transactions> Data { get; private set; } = new List<Transactions>();
 
+        public ImportTransactionsData(List<Transactions> data)
+        {
+            this.Data = data;
+        }
+
+        public ImportTransactionsData()
+        {
+
+        }
+
+        public void AddTransactionList(List<Transactions> data)
+        {
+            this.Data = data;
+        }
+
         public void AddTransaction(Transactions items)
         {
             Data.Add(items);

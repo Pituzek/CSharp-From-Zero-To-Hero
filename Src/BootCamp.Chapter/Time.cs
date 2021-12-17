@@ -10,7 +10,7 @@ namespace BootCamp.Chapter
     {
         public static void GroupByShopName(List<Transactions> data)
         {
-            var groupDataByShopName = data.Select(x => new DailyRepData(x.Shop, x.Time.ToString("dddd", CultureInfo.GetCultureInfoByIetfLanguageTag("en-GB")), x.Price))
+            var groupDataByShopName = data.Select(x => new DailyRepData(x.Shop, x.Time.ToString("dddd", CultureInfo.GetCultureInfoByIetfLanguageTag("en-GB")), x.PriceDec))
             .GroupBy(element => element.ShopName)
             .OrderBy(x => x.Key)
             .ToList();
@@ -62,7 +62,7 @@ namespace BootCamp.Chapter
             var GetTotalPriceByHour = data.Select(
                 group => (
                 group.Key,
-                group.Sum(item => item.Price))).ToList();
+                group.Sum(item => item.PriceDec))).ToList();
 
             List<decimal> totalPricePerHour = new List<decimal>();
             foreach(var total in GetTotalPriceByHour)

@@ -20,7 +20,7 @@ namespace BootCamp.Chapter
             var totalPriceByCity = groupDataByCity.Select(
                group => (
                group.Key,
-               group.Sum(item => item.Price))).ToList();
+               group.Sum(item => item.PriceDec))).ToList();
 
             var completeDataByCity = itemCount.Join(totalPriceByCity,
                 count => count.Key,
