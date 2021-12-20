@@ -12,6 +12,7 @@ namespace BootCamp.Chapter
 
         public Times(int hour, int count, string earned)
         {
+            if (hour == 24) hour = 0;
             this.Hour = hour;
             this.Count = count;
             this.Earned = earned;

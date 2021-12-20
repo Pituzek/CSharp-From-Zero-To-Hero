@@ -9,7 +9,7 @@ namespace BootCamp.Chapter
 {
     public static class FilterByTime
     {
-        public static void FilterByTimeHourRange(ImportTransactionsData dataInput, List<string> command, string outputFilePath)
+        public static void FilterByTimeHourRange(ImportTransactionsData dataInput, List<string> command, string outputFilePath, string fileExtension)
         {
             ///<summary>
             ///     Data filtered by hour range
@@ -43,12 +43,58 @@ namespace BootCamp.Chapter
                 // add start/end time to print correct hour into report!!
                 TimeLinq.FullDayReportData(getTotalPriceByHourRange, getItemCountByHourRange, avgMoneyPerHour, rushHourDataSave, fullDayReportData);
 
+                bool isJson = fileExtension.Equals(".json");
+                bool isXml = fileExtension.Equals(".xml");
+
                 ///<summary>
-                ///     Export data to FullDayRange.csv
+                ///     Export to .json
                 /// </summary>
-                //var curDir = @"C:\Users\piotr\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Output";
-                var curDir = "";
-                ExportDataToReport.PrintTimeReport(fullDayReportData, Path.Combine(curDir, outputFilePath), "FullDayRange.csv");
+                if (isJson)
+                {
+                    TimesToExport objList = new TimesToExport(startTime, endTime);
+                    List<string> rushHourDataSaveJson = new List<string>();
+                    TimeLinq.GetRushHourInt(avgMoneyPerHour, rushHourDataSaveJson);
+                    var rushHour = rushHourDataSaveJson[0];
+                    var rushHourInt = Convert.ToInt32(rushHour);
+
+                    for (int i = 0; i < dataGroupedByHourRange.Count; i++)
+                    {
+                        for (int j = 0; j < objList.Times.Count; j++)
+                        {
+                            if (objList.Times[j].Hour == dataGroupedByHourRange[i].Key)
+                            {
+                                objList.Times[j].Count = getItemCountByHourRange[i];
+                                objList.Times[j].Earned = "€" + avgMoneyPerHour[i];
+                                if (rushHourInt == i) objList.RushHour = dataGroupedByHourRange[i].Key;
+                            }
+                        }
+                    }
+
+                    string[] removeExt = outputFilePath.Split(".");
+                    string fileName = removeExt[0];
+                    var jsonString = JsonConvert.SerializeObject(objList);
+                    jsonString = JsonConvert.SerializeObject(objList, Formatting.Indented);
+                    File.WriteAllText(fileName, jsonString);
+                }
+                ///<summary>
+                ///     Export to .xml
+                /// </summary>
+                else if (isXml)
+                {
+
+                }
+                ///<summary>
+                ///     Export to .csv
+                /// </summary>
+                else
+                {
+                    ///<summary>
+                    ///     Export data to FullDayRange.csv
+                    /// </summary>
+                    //var curDir = @"C:\Users\piotr\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Output";
+                    var curDir = "";
+                    ExportDataToReport.PrintTimeReport(fullDayReportData, Path.Combine(curDir, outputFilePath), "FullDayRange.csv");
+                }
             }
         }
     

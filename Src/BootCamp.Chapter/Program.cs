@@ -66,13 +66,13 @@ namespace BootCamp.Chapter
                 }
                 outputFilePath = args[2];
 
-                if (args[0].Contains(".json"))
+                if (args[0].Contains(".json") || args[2].Contains(".json"))
                 {
                     fileExtension = ".json";
                     isJson = true;
                     isXml = false;
                 }
-                else if (args[0].Contains(".xml"))
+                else if (args[0].Contains(".xml") || args[2].Contains(".xml"))
                 {
                     fileExtension = ".xml";
                     isXml = true;
@@ -155,7 +155,7 @@ namespace BootCamp.Chapter
                         ///<summary>
                         ///     FullDay.csv by "time" command, including time range
                         /// </summary>
-                        FilterByTime.FilterByTimeHourRange(dataInput, command, outputFilePath);
+                        FilterByTime.FilterByTimeHourRange(dataInput, command, outputFilePath, fileExtension);
                     }
                     break;
 
