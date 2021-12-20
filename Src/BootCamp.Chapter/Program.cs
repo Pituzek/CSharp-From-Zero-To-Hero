@@ -88,12 +88,13 @@ namespace BootCamp.Chapter
 
             ImportTransactionsData dataInput = new ImportTransactionsData();
 
+            ///<summary>
+            ///     Data import from .json
+            /// </summary>
+            /// 
             if (isJson)
             {
-                ///<summary>
-                ///     Data import from .json
-                /// </summary>
-                /// 
+   
                 string fileName = @"C:\Users\piotr\Source\Repos\CSharp-From-Zero-To-Hero\Tests\BootCamp.Chapter.Tests\Input\Transactions.json";
                 string jsonString = File.ReadAllText(fileName);
                 var transactionsReadFromJson = JsonConvert.DeserializeObject<List<Transactions>>(jsonString);
@@ -101,18 +102,20 @@ namespace BootCamp.Chapter
                 dataInput.AddTransactionList(transactionsReadFromJson);
             }
 
+            ///<summary>
+            ///     Data import from .xml
+            /// </summary>
             if (isXml)
             {
-                ///<summary>
-                ///     Data import from .xml
-                /// </summary>
+
             }
 
+            ///<summary>
+            ///     Data import from .csv
+            /// </summary>
             if (!isJson && !isXml)
             {
-                ///<summary>
-                ///     Data import from .csv
-                /// </summary>
+
                 dataInput.ImportTransactionsDataT(filePath);
             }
 

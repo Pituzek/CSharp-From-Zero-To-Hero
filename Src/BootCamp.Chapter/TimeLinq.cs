@@ -27,7 +27,7 @@ namespace BootCamp.Chapter
         public static List<IGrouping<int, Transactions>> GroupByHourRange(List<Transactions> data, DateTime startTime, DateTime endTime)
         {
             List<IGrouping<int, Transactions>> groupDataByHourRange;
-            if (endTime.Hour == 0)
+            if (endTime.Hour == 0) // (endTime.Hour <= startTime)
             {
                 ///<summary>
                 ///     start and end times are in different days         
@@ -45,7 +45,6 @@ namespace BootCamp.Chapter
                     .GroupBy(element => element.Time.Hour)
                     .OrderBy(x => x.Key).ToList();
             }
-
 
             return groupDataByHourRange;
         }

@@ -71,6 +71,7 @@ namespace BootCamp.Chapter
             this.street = Street;
             this.item = Item;
 
+            DateTime = DateTime.Replace("Z", ""); // need universal time (if i leave Z at the end, an 1 hour will be added to converted date from string to DateTime)
             CultureInfo culture = new CultureInfo("en-US");
             DateTime tempDate = Convert.ToDateTime(DateTime, culture);
             this.time = tempDate;

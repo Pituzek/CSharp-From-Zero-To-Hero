@@ -48,7 +48,7 @@ namespace BootCamp.Chapter
                 /// </summary>
                 //var curDir = @"C:\Users\piotr\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Output";
                 var curDir = "";
-               ExportDataToReport.PrintTimeReport(fullDayReportData, Path.Combine(curDir, outputFilePath), "FullDayRange.csv");
+                ExportDataToReport.PrintTimeReport(fullDayReportData, Path.Combine(curDir, outputFilePath), "FullDayRange.csv");
             }
         }
     
@@ -102,7 +102,7 @@ namespace BootCamp.Chapter
                             if (objList.Times[j].Hour == dataGroupedByHour[i].Key)
                             {
                                 objList.Times[j].Count = getItemCountByHour[i];
-                                objList.Times[j].Earned = avgMoneyPerHour[i];
+                                objList.Times[j].Earned = "€" + avgMoneyPerHour[i];
                                 if (rushHourInt == i) objList.RushHour = dataGroupedByHour[i].Key;
                             }
                         }
