@@ -46,8 +46,6 @@ namespace BootCamp.Chapter
                 Times test = new Times(i, 0, "€0");
                 list.Add(test);
             }
-
-
         }
     }
 }

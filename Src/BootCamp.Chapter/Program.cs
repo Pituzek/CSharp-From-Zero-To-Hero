@@ -57,7 +57,7 @@ namespace BootCamp.Chapter
                 ///<summary>
                 ///     check for invalid command name
                 /// </summary>
-                if (commandString[0] != "time" && commandString[0] != "city" && commandString[0] != "daily" && commandString[0] != "full")
+                if (commandString[0].ToLowerInvariant() != "time" && commandString[0].ToLowerInvariant() != "city" && commandString[0].ToLowerInvariant() != "daily" && commandString[0].ToLowerInvariant() != "full")
                     throw new InvalidCommandException();
 
                 foreach (var data in commandString)

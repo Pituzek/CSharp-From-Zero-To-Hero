@@ -104,26 +104,66 @@ namespace BootCamp.Chapter
         {
             try
             {
-                int count = 0;
-                string filePath = outputPath;
-                string dirPath = Path.GetDirectoryName(outputPath);
-                if (!Directory.Exists(outputPath))
-                    Directory.CreateDirectory(outputPath);
+                bool isJson = outputPath.Contains(".json");
+                bool isXml = outputPath.Contains(".xml");
 
-                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-                var enc1252 = Encoding.GetEncoding(1252);
-
-                using (StreamWriter sw = new StreamWriter(Path.Combine(outputPath, fileName)))
+                ///<summary>
+                ///     Export to .json
+                /// </summary>
+                if (isJson)
                 {
-                    CultureInfo invC = CultureInfo.InvariantCulture;
-                    
-                    foreach(var day in data)
+                    DailyJSON dailyData = new DailyJSON();
+
+                    foreach (var day in data)
                     {
-                        if (count < 1) sw.Write("Day, Earned" + Environment.NewLine);
-                        sw.Write(day[0] + ", \"" + day[1] + " €\"" + Environment.NewLine);
-                        if (count < 2) count++;
+                        if (day.Count > 0)
+                        {
+                            dailyData = new DailyJSON(day[0], day[1]);
+                        }
+                    }
+
+                    string[] removeExt = outputPath.Split(".");
+                    fileName = removeExt[0];
+                    var jsonString = JsonConvert.SerializeObject(dailyData);
+                    jsonString = JsonConvert.SerializeObject(dailyData, Formatting.Indented);
+                    File.WriteAllText(fileName, jsonString);
+                }
+
+                ///<summary>
+                ///     Export to .xml
+                /// </summary>
+                if (isXml)
+                {
+                    throw new NotImplementedException("Export to .xml not yet implemented");
+                }
+
+                ///<summary>
+                ///     Export to .csv
+                /// </summary>
+                if (!isJson && !isXml)
+                {
+                    int count = 0;
+                    string filePath = outputPath;
+                    string dirPath = Path.GetDirectoryName(outputPath);
+                    if (!Directory.Exists(outputPath))
+                        Directory.CreateDirectory(outputPath);
+
+                    Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+                    var enc1252 = Encoding.GetEncoding(1252);
+
+                    using (StreamWriter sw = new StreamWriter(Path.Combine(outputPath, fileName)))
+                    {
+                        CultureInfo invC = CultureInfo.InvariantCulture;
+
+                        foreach (var day in data)
+                        {
+                            if (count < 1) sw.Write("Day, Earned" + Environment.NewLine);
+                            sw.Write(day[0] + ", \"" + day[1] + " €\"" + Environment.NewLine);
+                            if (count < 2) count++;
+                        }
                     }
                 }
+              
             }
             catch (Exception ex)
             {
