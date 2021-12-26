@@ -27,8 +27,12 @@ namespace BootCamp.Chapter
                 ///<summary>
                 ///     For debug without automated tests
                 /// </summary>
-                filePath = @"C:\Users\piotr\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\Transactions.csv";
+                filePath = @"C:\Users\piotr\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\Transactions.xml";
                 //command.Add("time");
+
+                fileExtension = ".xml";
+                isXml = true;
+                isJson = false;
 
                 //command.Add("city");
                 //command.Add("money");
@@ -107,7 +111,11 @@ namespace BootCamp.Chapter
             /// </summary>
             if (isXml)
             {
+                string fileName = @"C:\Users\piotr\Source\Repos\CSharp-From-Zero-To-Hero\Tests\BootCamp.Chapter.Tests\Input\Transactions.xml";
+                string xmlString = File.ReadAllText(fileName);
+                var transactionsReadFromXml = XmlConvert.DeserializeObject<List<Transactions>>(xmlString);
 
+                dataInput.AddTransactionList(transactionsReadFromXml);
             }
 
             ///<summary>

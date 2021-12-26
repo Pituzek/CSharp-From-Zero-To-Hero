@@ -54,6 +54,9 @@ namespace BootCamp.Chapter
             set { this.time = value; }
         }
 
+        // added for XML deserialization
+        public DateTime DateTime { get; set; }
+
         private decimal priceDec;
 
         public decimal PriceDec
@@ -82,6 +85,11 @@ namespace BootCamp.Chapter
             this.Price = Price;
 
             //AddTransaction(this);
+        }
+
+        public Transactions()
+        {
+
         }
 
         //public void AddTransaction(Transactions items)
