@@ -111,11 +111,10 @@ namespace BootCamp.Chapter
             /// </summary>
             if (isXml)
             {
-                string fileName = @"C:\Users\piotr\Source\Repos\CSharp-From-Zero-To-Hero\Tests\BootCamp.Chapter.Tests\Input\Transactions.xml";
-                string xmlString = File.ReadAllText(fileName);
-                var transactionsReadFromXml = XmlConvert.DeserializeObject<List<Transactions>>(xmlString);
+                string fileName = @"C:\Users\piotr\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\Transactions.xml";
+                var transactionsReadFromXml = XmlConvert.DeserializeFile<Transactions>(fileName);
 
-                dataInput.AddTransactionList(transactionsReadFromXml);
+                //dataInput.AddTransactionList(transactionsReadFromXml);
             }
 
             ///<summary>
