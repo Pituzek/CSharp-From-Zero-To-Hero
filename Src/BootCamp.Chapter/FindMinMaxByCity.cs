@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using BootCamp.Chapter.Xml;
 
 namespace BootCamp.Chapter
 {
@@ -21,6 +22,38 @@ namespace BootCamp.Chapter
                group => (
                group.Key,
                group.Sum(item => item.PriceDec))).ToList();
+
+            var completeDataByCity = itemCount.Join(totalPriceByCity,
+                count => count.Key,
+                price => price.Key,
+                (count, price) => new
+                {
+                    CityName = count.Key,
+                    TotalMoney = price.Item2,
+                    TotalItemCount = count.Item2
+                }).ToList();
+
+            foreach (var city in completeDataByCity)
+            {
+                new City(city.CityName, city.TotalMoney, city.TotalItemCount);
+            }
+        }
+
+        //Added for XML serialization
+        public static void GroupDataByCity(List<Transaction> data)
+        {
+            var groupDataByCity = data.GroupBy(element => element.City)
+                  .OrderBy(x => x.Key).ToList();
+
+            var itemCount = groupDataByCity.Select(
+                  group => (
+                  group.Key,
+                  group.Count())).ToList();
+
+            var totalPriceByCity = groupDataByCity.Select(
+               group => (
+               group.Key,
+               group.Sum(item => Convert.ToDecimal(item.Price.Replace("€", ""))))).ToList();
 
             var completeDataByCity = itemCount.Join(totalPriceByCity,
                 count => count.Key,

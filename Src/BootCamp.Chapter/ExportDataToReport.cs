@@ -73,8 +73,9 @@ namespace BootCamp.Chapter
                     ///<summary>
                     ///     Export to .xml
                     /// </summary>
-                    Console.WriteLine("Write to xml not implemented");
-                    throw new NotImplementedException("Write to xml not implemented");
+                    string fileName = outputPath;
+                    var xml = XmlConvert.SerializeObject(cityName);
+                    File.WriteAllText(fileName, xml);
                 }
 
                 if (!isJson && !isXml)

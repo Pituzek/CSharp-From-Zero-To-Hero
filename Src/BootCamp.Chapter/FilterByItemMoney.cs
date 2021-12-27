@@ -14,7 +14,14 @@ namespace BootCamp.Chapter
                 ///<summary>>
                 ///     prepare data for evaluation
                 /// </summary>
-                FindMinMaxByCity.GroupDataByCity(dataInput.Data);
+                if (fileExtension != ".xml")
+                {
+                    FindMinMaxByCity.GroupDataByCity(dataInput.Data);
+                }
+                else
+                {
+                    FindMinMaxByCity.GroupDataByCity(dataInput.DataXml);
+                }
 
                 ///<summary>
                 ///     search for min or max
