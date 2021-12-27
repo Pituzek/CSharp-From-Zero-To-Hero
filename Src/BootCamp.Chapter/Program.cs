@@ -112,9 +112,8 @@ namespace BootCamp.Chapter
             if (isXml)
             {
                 string fileName = @"C:\Users\piotr\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\Transactions.xml";
-                var transactionsReadFromXml = XmlConvert.DeserializeFile<Transactions>(fileName);
-
-                //dataInput.AddTransactionList(transactionsReadFromXml);
+                var transactionsReadFromXml = XmlConvert.DeserializeFile<BootCamp.Chapter.Xml.Transactions>(fileName);
+                dataInput.AddTransactionListXML(transactionsReadFromXml.Transaction);
             }
 
             ///<summary>

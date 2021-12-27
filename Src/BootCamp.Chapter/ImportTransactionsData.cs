@@ -9,6 +9,7 @@ namespace BootCamp.Chapter
     public class ImportTransactionsData
     {
         public List<Transactions> Data { get; private set; } = new List<Transactions>();
+        public List<BootCamp.Chapter.Xml.Transaction> DataXml { get; private set; } = new List<Xml.Transaction>();
 
         public ImportTransactionsData(List<Transactions> data)
         {
@@ -23,6 +24,11 @@ namespace BootCamp.Chapter
         public void AddTransactionList(List<Transactions> data)
         {
             this.Data = data;
+        }
+
+        public void AddTransactionListXML(List<BootCamp.Chapter.Xml.Transaction> data)
+        {
+            this.DataXml = data;
         }
 
         public void AddTransaction(Transactions items)
