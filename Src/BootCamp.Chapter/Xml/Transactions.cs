@@ -5,10 +5,9 @@ using System.Xml.Serialization;
 
 namespace BootCamp.Chapter.Xml
 {
-	[XmlRoot(ElementName = "Transactions")]
+	//[XmlRoot(ElementName = "Transactions")]
 	public class Transactions
 	{
-
 		[XmlElement(ElementName = "Transaction")]
 		public List<Transaction> Transaction { get; set; }
 	}
