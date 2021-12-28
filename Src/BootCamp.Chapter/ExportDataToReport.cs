@@ -136,7 +136,20 @@ namespace BootCamp.Chapter
                 /// </summary>
                 if (isXml)
                 {
-                    throw new NotImplementedException("Export to .xml not yet implemented");
+                    DailyJSON dailyData = new DailyJSON();
+
+                    foreach (var day in data)
+                    {
+                        if (day.Count > 0)
+                        {
+                            dailyData = new DailyJSON(day[0], day[1]);
+                        }
+                    }
+
+                    string[] removeExt = outputPath.Split(".");
+                    fileName = removeExt[0];
+                    var jsonString = XmlConvert.SerializeObject(dailyData);
+                    File.WriteAllText(fileName, jsonString);
                 }
 
                 ///<summary>
