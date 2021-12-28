@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace BootCamp.Chapter
 {
@@ -8,22 +9,50 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
+            ///<summary>
+            ///     Import data from .txt file
+            /// </summary>
             List<string> adressData = ReadDataFromFile.GetData();
 
-            for (int i = 0; i < adressData.Count; i++)
-            {
-                List<string> singleCity = new List<string>();
-                singleCity.Add(adressData[i]);
+            ///<summary>
+            ///     Create address object
+            /// </summary>
+            CreateAddressObjectFromImportedData.CreateObject(adressData);
 
-                if (singleCity.Count == 7) new Address(singleCity[0], singleCity[1], singleCity[2], singleCity[3], singleCity[4], singleCity[5], singleCity[6]);    
+            ///<summary>
+            ///     Group data by post office
+            /// </summary>
+            var fullList = Address.AddressList;
+            var groupedByPostal = fullList.GroupBy(x => x.PostalCode).ToList();
+
+            ///<summary>
+            ///     Find and count duplicates for every post office
+            /// </summary>
+            int equalCount = 0;
+            int highestDuplicatesCount = int.MinValue;
+            string? postalOfficeWithMostDuplicates = string.Empty;
+            string? currentPostOffice = string.Empty;
+
+            for (int i = 0; i < groupedByPostal.Count; i++)
+            {
+                var list = groupedByPostal[i].ToList();
+                currentPostOffice = list[0]?.PostalCode;
+
+                for (int j = 1; j < list.Count; j++)
+                {
+                    var isEqual = list[0] == list[j];
+                    if (isEqual) equalCount++;
+                }
+
+                if (equalCount > highestDuplicatesCount)
+                {
+                    highestDuplicatesCount = equalCount;
+                    postalOfficeWithMostDuplicates = currentPostOffice;
+                }
+                equalCount = 0;
             }
 
-            Address adress1 = new Address(adressData[0], adressData[1], adressData[2], adressData[3], adressData[4], adressData[5], adressData[6]);
-            Address adress2 = new Address(adressData[7], adressData[1], adressData[2], adressData[3], adressData[4], adressData[5], adressData[6]);
-
-            var isDuplicate = adress1 == adress2;
-            Console.WriteLine(isDuplicate);
-
+            //Console.WriteLine($"{postalOfficeWithMostDuplicates} - {highestDuplicatesCount}");
         }
     }
 }
