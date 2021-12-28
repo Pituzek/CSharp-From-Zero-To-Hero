@@ -48,9 +48,19 @@ namespace BootCamp.Chapter
 
             return groupDataByHourRange;
         }
+
         public static List<IGrouping<int, Transactions>> GroupByHour(List<Transactions> data)
         {
             var groupDataByHour = data.GroupBy(element => element.Time.Hour)
+                    .OrderBy(x => x.Key).ToList();
+
+            return groupDataByHour;
+        }
+
+        //Added for XML serialization
+        public static List<IGrouping<int, BootCamp.Chapter.Xml.Transaction>> GroupByHour(List<BootCamp.Chapter.Xml.Transaction> data)
+        {
+            var groupDataByHour = data.GroupBy(element => element.DateTime.Hour)
                     .OrderBy(x => x.Key).ToList();
 
             return groupDataByHour;
@@ -72,7 +82,40 @@ namespace BootCamp.Chapter
             return totalPricePerHour;
         }
 
+        public static List<decimal> GetTotalPriceByHourXML(List<IGrouping<int, BootCamp.Chapter.Xml.Transaction>> data)
+        {
+            var GetTotalPriceByHour = data.Select(
+                group => (
+                group.Key,
+                group.Sum(item => Convert.ToDecimal(item.Price.Replace("€", ""))))).ToList();
+
+            List<decimal> totalPricePerHour = new List<decimal>();
+            foreach (var total in GetTotalPriceByHour)
+            {
+                totalPricePerHour.Add(total.Item2);
+            }
+
+            return totalPricePerHour;
+        }
+
         public static List<int> GetItemCountByHour(List<IGrouping<int, Transactions>> data)
+        {
+            //var getItemCountPerHour = data.Select(group => (group.Key, group.GroupBy(item => item.Price)));
+            var getItemCountPerHour = data.Select(
+                group => (
+                group.Key,
+                group.Count())).ToList();
+
+            List<int> totalCountPerHour = new List<int>();
+            foreach (var total in getItemCountPerHour)
+            {
+                totalCountPerHour.Add(total.Item2);
+            }
+
+            return totalCountPerHour;
+        }
+
+        public static List<int> GetItemCountByHourXML(List<IGrouping<int, BootCamp.Chapter.Xml.Transaction>> data)
         {
             //var getItemCountPerHour = data.Select(group => (group.Key, group.GroupBy(item => item.Price)));
             var getItemCountPerHour = data.Select(

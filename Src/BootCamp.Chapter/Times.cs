@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BootCamp.Chapter
 {
-    class Times
+    public class Times
     {
         public int Hour { get; set; }
         public int Count { get; set; }

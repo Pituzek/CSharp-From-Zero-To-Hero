@@ -28,7 +28,7 @@ namespace BootCamp.Chapter
                 ///     For debug without automated tests
                 /// </summary>
                 filePath = @"C:\Users\piotr\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\Transactions.xml";
-                //command.Add("time");
+                command.Add("time");
 
                 fileExtension = ".xml";
                 isXml = true;
@@ -38,9 +38,9 @@ namespace BootCamp.Chapter
                 //command.Add("money");
                 //command.Add("min");
 
-                command.Add("daily");
-                command.Add("Kwiki");
-                command.Add("Mart");
+                //command.Add("daily");
+                //command.Add("Kwiki");
+                //command.Add("Mart");
 
                 startTime = new DateTime(2021, 1, 1, 0, 11, 0, 0);
                 endTime = new DateTime(2021, 1, 1, 0, 17, 0, 0); ;
@@ -121,7 +121,6 @@ namespace BootCamp.Chapter
             /// </summary>
             if (!isJson && !isXml)
             {
-
                 dataInput.ImportTransactionsDataT(filePath);
             }
 

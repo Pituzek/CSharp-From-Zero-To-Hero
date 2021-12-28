@@ -5,6 +5,7 @@ using System.IO;
 using System.Globalization;
 using System.Linq;
 using Newtonsoft.Json;
+using System.Xml.Serialization;
 
 namespace BootCamp.Chapter
 {

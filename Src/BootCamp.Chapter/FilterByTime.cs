@@ -105,9 +105,27 @@ namespace BootCamp.Chapter
             /// </summary>
             if (command.Count == 1 && command[0].ToLowerInvariant() == "time")
             {
-                var dataGroupedByHour = TimeLinq.GroupByHour(dataInput.Data);
-                var getTotalPriceByHour = TimeLinq.GetTotalPriceByHour(dataGroupedByHour);
-                var getItemCountByHour = TimeLinq.GetItemCountByHour(dataGroupedByHour);
+                List<System.Linq.IGrouping<int, Transactions>> dataGroupedByHour = new List<System.Linq.IGrouping<int, Transactions>>();
+                List<decimal> getTotalPriceByHour = new List<decimal>();
+                List<int> getItemCountByHour = new List<int>();
+                List<System.Linq.IGrouping<int, BootCamp.Chapter.Xml.Transaction>> dataGroupedByHourXML = new List<System.Linq.IGrouping<int, BootCamp.Chapter.Xml.Transaction>>();
+                List<decimal> getTotalPriceByHourXML = new List<decimal>();
+                List<int> getItemCountByHourXML = new List<int>();
+
+                if (fileExtension.Equals(".xml"))
+                { 
+                    dataGroupedByHourXML = TimeLinq.GroupByHour(dataInput.DataXml);
+                    getTotalPriceByHourXML = TimeLinq.GetTotalPriceByHourXML(dataGroupedByHourXML);
+                    getItemCountByHourXML = TimeLinq.GetItemCountByHourXML(dataGroupedByHourXML);
+                    getTotalPriceByHour = getTotalPriceByHourXML;
+                    getItemCountByHour = getItemCountByHourXML;
+                }
+                else
+                {
+                    dataGroupedByHour = TimeLinq.GroupByHour(dataInput.Data);
+                    getTotalPriceByHour = TimeLinq.GetTotalPriceByHour(dataGroupedByHour);
+                    getItemCountByHour = TimeLinq.GetItemCountByHour(dataGroupedByHour);
+                }
 
                 ///<summary>
                 ///     Get average money earn, by dividing total price by item count
@@ -160,12 +178,36 @@ namespace BootCamp.Chapter
                     jsonString = JsonConvert.SerializeObject(objList, Formatting.Indented);
                     File.WriteAllText(fileName, jsonString);
                 }
+
                 ///<summary>
                 ///     Export to .xml
                 /// </summary>
                 else if (isXml)
                 {
+                    TimesToExport objList = new TimesToExport();
+                    List<string> rushHourDataSaveJson = new List<string>();
+                    TimeLinq.GetRushHourInt(avgMoneyPerHour, rushHourDataSaveJson);
+                    var rushHour = rushHourDataSaveJson[0];
+                    var rushHourInt = Convert.ToInt32(rushHour);
 
+                    for (int i = 0; i < dataGroupedByHourXML.Count; i++)
+                    {
+                        for (int j = 0; j < objList.Times.Count; j++)
+                        {
+                            if (objList.Times[j].Hour == dataGroupedByHourXML[i].Key)
+                            {
+                                objList.Times[j].Count = getItemCountByHour[i];
+                                objList.Times[j].Earned = "€" + avgMoneyPerHour[i];
+                                if (rushHourInt == i) objList.RushHour = dataGroupedByHourXML[i].Key;
+                            }
+                        }
+                    }
+
+                    string[] removeExt = outputFilePath.Split(".");
+                    //string fileName = @"C:\Users\piotr\source\repos\CSharp-From-Zero-To-Hero\Tests\BootCamp.Chapter.Tests\bin\Debug\netcoreapp3.1\test.xml";
+                    string fileName = removeExt[0];
+                    var jsonString = XmlConvert.SerializeObject(objList);
+                    File.WriteAllText(fileName, jsonString);
                 }
                 ///<summary>
                 ///     Export to .csv

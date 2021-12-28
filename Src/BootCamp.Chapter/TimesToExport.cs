@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BootCamp.Chapter
 {
-    class TimesToExport
+    public class TimesToExport
     {
         public List<Times> Times { get; set; } = new List<Times>();
         public int RushHour { get; set; }
